@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/empty_tile_visible.png" type="Texture" id=2]
+[ext_resource path="res://Assets/full_background.png" type="Texture" id=3]
+[ext_resource path="res://src/Objects/Object.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "empty_tile_visible.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("WhiteOverlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "light_up"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("WhiteOverlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Mars" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 729.0
+margin_bottom = 427.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 462.391, 241.905 )
+
+[node name="TileMap" type="TileMap" parent="."]
+mode = 1
+tile_set = SubResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -2359247, 0, 0, -2359246, 0, 0, -2293711, 0, 0, -2293710, 0, 0, -2293709, 0, 0, -2293708, 0, 0, -2228177, 0, 0, -2228176, 0, 0, -2228175, 0, 0, -2228172, 0, 0, -2228171, 0, 0, -2228170, 0, 0, -2162642, 0, 0, -2162641, 0, 0, -2162634, 0, 0, -2162633, 0, 0, -2162632, 0, 0, -2097107, 0, 0, -2097106, 0, 0, -2097096, 0, 0, -2097095, 0, 0, -2097094, 0, 0, -2031573, 0, 0, -2031572, 0, 0, -2031571, 0, 0, -2031558, 0, 0, -2031557, 0, 0, -2031556, 0, 0, -1966037, 0, 0, -1966036, 0, 0, -1966020, 0, 0, -1966019, 0, 0, -1900502, 0, 0, -1900501, 0, 0, -1900483, 0, 0, -1900482, 0, 0, -1834967, 0, 0, -1834966, 0, 0, -1769432, 0, 0, -1769431, 0, 0, -1703897, 0, 0, -1703896, 0, 0, -1638362, 0, 0, -1638361, 0, 0, -1572827, 0, 0, -1572826, 0, 0, -1507292, 0, 0, -1507291, 0, 0, -1441757, 0, 0, -1441756, 0, 0, -1376222, 0, 0, -1376221, 0, 0, -1310687, 0, 0, -1310686, 0, 0, -1245152, 0, 0, -1245151, 0, 0, -1179617, 0, 0, -1179616, 0, 0, -1114082, 0, 0, -1114081, 0, 0, -1048547, 0, 0, -1048546, 0, 0, -983012, 0, 0, -983011, 0, 0, -917477, 0, 0, -917476, 0, 0, -851943, 0, 0, -851942, 0, 0, -851941, 0, 0, -786408, 0, 0, -786407, 0, 0, -786406, 0, 0, -720873, 0, 0, -720872, 0, 0, -720871, 0, 0, -655337, 0, 0, -655336, 0, 0, -589802, 0, 0, -589801, 0, 0, -524267, 0, 0, -524266, 0, 0, -458732, 0, 0, -458731, 0, 0, -393197, 0, 0, -393196, 0, 0, -327662, 0, 0, -327661, 0, 0, -262127, 0, 0, -262126, 0, 0, -196592, 0, 0, -196591, 0, 0, -131057, 0, 0, -131056, 0, 0, -65522, 0, 0, -65521, 0, 0, 13, 0, 0, 14, 0, 0, 65548, 0, 0, 65549, 0, 0, 131083, 0, 0, 131084, 0, 0, 196618, 0, 0, 196619, 0, 0, 262153, 0, 0, 262154, 0, 0, 327689, 0, 0, 327690, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 458762, 0, 0, 458763, 0, 0, 524299, 0, 0, 524300, 0, 0, 589835, 0, 0, 589836, 0, 0, 655372, 0, 0, 655373, 0, 0, 720908, 0, 0, 720909, 0, 0, 786445, 0, 0, 786446, 0, 0, 851981, 0, 0, 851982, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 983054, 0, 0, 983055, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1114128, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1245201, 0, 0 )
+
+[node name="Object" parent="." groups=[
+"Objects",
+] instance=ExtResource( 4 )]
+position = Vector2( 585.925, 184.084 )
+_text_box_contents = [ "dfasdfaaaaaaaaaaaaaalkfjasd;fkjas;kdfj", "Hello there" ]
+
+[node name="Object2" parent="." groups=[
+"Objects",
+] instance=ExtResource( 4 )]
+position = Vector2( 372.657, 346.841 )
+_text_box_contents = [ "This is a different object", "But it still works!" ]
+
+[node name="AnimationPlayer" parent="Object2" index="3"]
+anims/default = SubResource( 3 )
+anims/light_up = SubResource( 4 )
+
+[editable path="Object"]
+[editable path="Object2"]
